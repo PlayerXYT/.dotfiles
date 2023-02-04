@@ -33,10 +33,11 @@ bindsym $mod+e layout split
 
 bindsym $mod+space floating toggle
 
-set $ws1 "Firefox"
-set $ws2 "Terminal"
-set $ws3 "OBS"
-set $ws4 "Discord"
+# Fontawsome free logos
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4" # An OBS replacement because they don't have it
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -65,6 +66,11 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+10 move container to workspace $ws10
+
+assign [class="firefox"] $ws1
+assign [class="Xfce4-terminal"] $ws2
+assign [class="discord"] $ws3
+assign [class="obs"] $ws4
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
