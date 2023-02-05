@@ -1,0 +1,43 @@
+{
+    "audio": "pipewire",
+    "bootloader": "grub-install",
+    "config_version": "2.5.1",
+    "debug": false,
+    "desktop-environment": "i3",
+    "nic": {
+        "dhcp": true,
+        "dns": null,
+        "gateway": null,
+        "iface": null,
+        "ip": null,
+        "type": "iso"
+    },
+    "no_pkg_lookups": false,
+    "offline": false,
+    "packages": [
+        "feh",
+        "dmenu",
+        "git",
+        "neovim",
+        "firefox",
+        "go",
+        "python",
+        "pypy3",
+        "python-pip",
+        "openjdk17-src",
+        "openjdk17-doc",
+        "networkmanager",
+        "net-tools",
+        "xfce4-terminal",
+        "nautilus",
+        "neofetch",
+        "man-db"
+    ],
+    "profile": {
+        "path": "/usr/lib/python3.10/site-packages/archinstall/profiles/desktop.py"
+    },
+    "script": "guided",
+    "silent": false,
+    "swap": true,
+    "version": "2.5.1"
+}
