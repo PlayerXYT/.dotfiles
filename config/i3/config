@@ -6,38 +6,29 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lick -- i3lock --nofork
 exec --no-startup-id nm-applet
 
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec --no-startup-id xfce4-terminal
 
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec --no-startup-id dmenu_run
 
 bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Left move left
-bindsym $mod+Down move down
-bindsym $mod+Up move up
-bindsym $mod+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
 
 bindsym $mod+h split h
 bindsym $mod+v split v
 
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout split
+workspace_layout tabbed
 
-bindsym $mod+space floating toggle
-
-# Fontawsome free logos
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4" # An OBS replacement because they don't have it
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -69,26 +60,30 @@ bindsym $mod+Shift+10 move container to workspace $ws10
 
 assign [class="firefox"] $ws1
 assign [class="Xfce4-terminal"] $ws2
-assign [class="discord"] $ws3
-assign [class="obs"] $ws4
+
+exec --no-startup-id firefox&
+exec --no-startup-id xfce4-terminal&
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exit
 
-mode "resize" {
-	bindsym Left resize shirnk width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-	bindsym Up resize shirnk height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-	bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
+# class                 border  backgr. text    indicat child_border
+client.focused          #ffffff #000000 #ffffff #000000 #000000
+client.focused_inactive #000000 #000000 #ffffff #000000 #000000
+client.unfocused        #000000 #000000 #ffffff #000000 #000000
+client.urgent           #000000 #000000 #ffffff #000000 #000000
+client.placeholder      #000000 #000000 #ffffff #000000 #000000
 
 bar {
 	status_command i3status
+
+	colors {
+		background #000000
+
+		#class             border  backgr. text
+		focused_workspace  #ffffff #000000 #ffffff
+		inactive_workspace #000000 #000000 #ffffff
+		urgent_workspace   #000000 #000000 #ffffff
+	}
 }
