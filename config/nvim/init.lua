@@ -62,3 +62,5 @@ elseif getftype()=="c" or getftype()=="cpp" then
 	end, { nargs=1 })
 	print("C plugin enabled")
 end
+
+-- test
