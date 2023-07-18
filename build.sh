@@ -1,6 +1,7 @@
 #!/bin/sh
 
 if grep -q "arch" /etc/os-release; then
+	sudo pacman -Sy
 	git clone https://aur.archlinux.org/yay-git.git
 	cd yay-git
 	makepkg -si --noconfirm
@@ -22,7 +23,8 @@ elif grep -q "fedora" /etc/os-release; then
 fi
 
 # Move RC files
+rm -rf $HOME/.bashrc $HOME/.config
 mv bashrc $HOME/.bashrc
-mv -r config $HOME/.config
+mv config $HOME/.config
 
 sudo chsh -s /bin/bash $USER # Some distros feel the need to set zsh by default, or even worse, fish which isn't even POSIX compliant!

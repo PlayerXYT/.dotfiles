@@ -5,6 +5,7 @@ alias rm='rm -rfd'
 alias mkdir='mkdir -p'
 alias pwd='pwd -P'
 alias egrep='grep -E'
+alias psql='psql -U postgres'
 
 mkfl() {
 	mkdir -p $1
