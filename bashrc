@@ -13,6 +13,15 @@ mkfl() {
 	touch $1
 }
 
+whipe() {
+	if test -z $1; then
+		echo No file specified!
+		return
+	fi
+	head /dev/urandom -c $(du -b $1 | cut -f1) > $1
+	rm $1
+}
+
 alias vi='nvim'
 alias vim='nvim'
 
