@@ -5,7 +5,7 @@ nnoremap("k", "kzz")
 
 vim.o.number = true
 vim.o.relativenumber = true
---vim.o.clipboard = 'unnamedplus' Removed, doesn't work, the "custom" clipboard buffer was a bad idea
+vim.o.clipboard = 'unnamedplus'
 vim.o.ignorecase = true
 vim.o.history = 25
 vim.o.splitright = true
