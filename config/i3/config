@@ -77,6 +77,8 @@ assign [class="discord"] $ws3
 assign [class="Thunar"] $ws3
 assign [class="hp-toolbox"] $ws3
 
+for_window [class="Galculator"] floating enable
+
 exec --no-startup-id firefox&
 exec --no-startup-id xfce4-terminal&
 
