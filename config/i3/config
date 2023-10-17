@@ -30,7 +30,7 @@ bindsym $mod+Shift+down move down
 bindsym $mod+h split h
 bindsym $mod+v split v
 
-bindsym $mod+f fullscreen toggle
+bindsym F11 fullscreen toggle
 
 set $ws1 "1"
 set $ws2 "2"
