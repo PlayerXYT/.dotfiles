@@ -29,6 +29,7 @@ bindsym $mod+Shift+down move down
 
 bindsym $mod+h split h
 bindsym $mod+v split v
+bindsym $mod+space floating toggle
 
 bindsym F11 fullscreen toggle
 
