@@ -22,9 +22,25 @@ whipe() {
 	rm $1
 }
 
+findin() {
+	if test -z $1; then
+		echo No string specified!
+		return
+	fi
+
+	for i in $(find -type f); do
+		if grep -q $1 $i; then
+			echo $i
+		fi
+	done
+}
+
 alias vi='nvim'
 alias vim='nvim'
 
-export LC_ALL="en_CA.UTF-8" # Idiot
+export LC_ALL="en_CA.UTF-8"
 
-neofetch
+if test $(whoami) != root; then
+	alias clear='clear ; neofetch'
+	neofetch
+fi
