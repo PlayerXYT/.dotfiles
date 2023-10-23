@@ -71,11 +71,20 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+10 move container to workspace $ws10
 
+# To the shadow realm
 assign [class="firefox"] $ws1
 assign [class="Xfce4-terminal"] $ws2
 assign [class="discord"] $ws3
 assign [class="Thunar"] $ws3
 assign [class="hp-toolbox"] $ws3
+assign [class="MuPDF"] $ws3
+assign [class="libreoffice-writer"] $ws3
+assign [class="libreoffice-calc"] $ws3
+assign [class="libreoffice-impress"] $ws3
+assign [class="libreoffice-draw"] $ws3
+assign [class="libreoffice-base"] $ws3
+assign [class="libreoffice-math"] $ws3
+assign [class="Soffice"] $ws3
 
 for_window [class="Galculator"] floating enable
 
