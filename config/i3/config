@@ -2,6 +2,7 @@ set $mod Mod4
 
 font pango:monospace 8
 
+exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
 
 bindsym $mod+Return exec --no-startup-id xfce4-terminal
