@@ -2,6 +2,8 @@ require("lib")
 
 nnoremap("j", "jzz")
 nnoremap("k", "kzz")
+vnoremap("j", "jzz")
+vnoremap("k", "kzz")
 
 vim.o.number = true
 vim.o.relativenumber = true
