@@ -1,7 +1,6 @@
 # Install more code packages
-sudo pacman -S git go bash-completion neovim neofetch --noconfirm
-# Mark go as a make dependency for yay
-sudo pacman -D --asdeps go --noconfirm
+sudo pacman -S git bash-completion neovim neofetch --noconfirm
+sudo pacman -S --asdeps go --noconfirm
 # Bootstrap yay
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -13,4 +12,4 @@ sudo nvim /etc/pacman.conf
 # Remove orphans
 yay -Rs $(yay -Qqdt)
 # Update repos and packages
-yay -Syyu
+yay -Syyu --noconfirm
