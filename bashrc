@@ -22,17 +22,14 @@ whipe() {
 	rm $1
 }
 
-findin() {
+jvmver() {
 	if test -z $1; then
-		echo No string specified!
+		echo No version specified!
+		ls /usr/lib/jvm
 		return
 	fi
-
-	for i in $(find -type f); do
-		if grep -q $1 $i; then
-			echo $i
-		fi
-	done
+	sudo rm /usr/lib/jvm/default-runtime
+	sudo ln -s /usr/lib/jvm/java-$1-openjdk /usr/lib/jvm/default-runtime
 }
 
 alias vi='nvim'
