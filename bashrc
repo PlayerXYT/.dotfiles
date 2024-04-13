@@ -8,15 +8,44 @@ alias pwd='pwd -P'
 alias egrep='grep -E --color=auto'
 alias grep='grep --color=auto'
 alias psql='psql -U postgres'
+alias cp='cp -r'
 
 mkfl() {
-	if [[ $1 = -h ]]; then
-		echo -e "Makes a file and its parent directories\nUsage: mkfl [file path]"
+	if [[ -z $1 ]]; then
+		echo No file specified!
+		return
+	elif [[ $1 = -h ]]; then
+		echo -e "Makes a file and its parent directories\nUsage:\n mkfl [file path]\n mkfl [file path] [permissions]"
 		return
 	fi
 	mkdir -p $1
 	rm -d $1
 	touch $1
+
+	if [[ -n $2 ]]; then
+		chmod $2 $1
+	fi
+}
+
+chmod-calc() {
+	if [[ -z $1 ]]; then
+		echo No permission specified!
+		return
+	elif [[ $1 = -h ]]; then
+		echo -e "Calculates the chmod value for a permission\nUsage: chmod-calc [r][w][x]"
+		return
+	fi
+	TOTAL=0
+	if [[ $1 = *r* ]]; then
+		TOTAL=4
+	fi
+	if [[ $1 = *w* ]]; then
+		TOTAL=$(($TOTAL+2))
+	fi
+	if [[ $1 = *x* ]]; then
+		TOTAL=$(($TOTAL+1))
+	fi
+	echo $TOTAL
 }
 
 whipe() {
@@ -103,13 +132,16 @@ evlc() {
 # For some reason this doesn't work in the vimrc
 nvim1() {
 	nvim $@
-	echo -ne "\e[5 q"
+	echo -ne "\e[0 q"
 }
 
 alias vi='nvim1'
 alias vim='nvim1'
 
-export PATH=$PATH:/opt/custom
+if [[ $PATH != */opt/custom* ]]; then
+	export PATH=$PATH:/opt/custom
+fi
+export PS1="[\e[1m\u\e[0m@\H \W] "
 
 if [[ $(whoami) != root ]]; then
 	alias clear='clear ; neofetch'
