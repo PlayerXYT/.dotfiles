@@ -77,12 +77,12 @@ whipe() {
 
 jvmver() {
 	if [[ -z $1 ]]; then
-		echo No version specified!
-		ls /usr/lib/jvm
+		echo -en "Versions available: \e[0;1m"
+		\ls /usr/lib/jvm -1 | tail -n +3 | sed -E "s/java-([0-9]+)-\w+/\1/" | tr "\n" " "
+		echo -e "\e[0m"
+		\ls -l /usr/lib/jvm | head -n 3 | tail -n 2 | sed -E "s/^.+?def/def/; s/\/.+?\///"
 	elif [[ $1 = -h ]]; then
-		echo -e "Changes the JVM version in use\nUsage:\n jvmver - lists jvm versions available\n jvmver c - prints the current jvm version\n jvmver [version] - changes the jvm version (requires sudo)"
-	elif [[ $1 = c ]]; then
-		ls -l /usr/lib/jvm | head -n 3 | tail -n 2
+		echo -e "Changes the JVM version in use\nUsage:\n jvmver - lists jvm versions available\n jvmver [version] - changes the jvm version (requires sudo)"
 	elif [[ $1 =~ [^0-9] ]]; then
 		echo Invalid command or version, version must be a number
 	else
@@ -141,7 +141,6 @@ alias vim='nvim1'
 if [[ $PATH != */opt/custom* ]]; then
 	export PATH=$PATH:/opt/custom
 fi
-export PS1="[\e[1m\u\e[0m@\H \W] "
 
 if [[ $(whoami) != root ]]; then
 	alias clear='clear ; neofetch'
