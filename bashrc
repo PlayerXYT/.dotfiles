@@ -1,3 +1,8 @@
+if [[ -z $TMUX ]]; then
+	tmux attach || tmux new
+	exit
+fi
+
 alias ls='ls --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -la --color=auto'
