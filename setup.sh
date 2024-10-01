@@ -11,7 +11,9 @@ arch_install() {
 	cd ..
 	rm -rf yay
 	# Add "community" and "multilib" sources
-	#TODO
+	cp /etc/pacman.conf pacman.conf.bak
+	sed -zre "s/#\[(community|multilib)]\n#/[\1]\n/gm" /etc/pacman.conf > pacman.conf.new
+	sudo cp pacman.conf.new /etc/pacman.conf
 	# Remove orphans (mostly go)
 	yay -Rs $(yay -Qqdt)
 	# Update repos and packages
