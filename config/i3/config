@@ -1,28 +1,38 @@
 set $mod Mod4
 
-font pango:monospace 8
+font pago:monospace, Font Awesome 6 Free Regular, Font Awesome 6 Free Solid, Font Awesome 6 Brands Regular 14
 
-exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id keepassxc --keyfile ~/key ~/Passwords.kdbx
+exec --no-startup-id feh --bg-fill --no-fehbg ~/.background.png
 
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+
+bindsym $mod+f exec --no-startup-id firefox
+bindsym $mod+Shift+f exec --no-startup-id firefox --private-window
 bindsym $mod+Return exec --no-startup-id xfce4-terminal
 
 bindsym $mod+Shift+q kill
+bindsym Mod1+F4 kill
 
-bindsym $mod+d exec --no-startup-id dmenu_run
+# https://fonts.google.com/specimen/Press+Start+2P
+bindsym $mod+d exec --no-startup-id dmenu_run -nf white -nb black -sf black -sb white -l 10 -p "Command:" -fn "Press Start 2P-12"
 
-bindsym XF86AudioRaiseVolme exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolme exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo light -U 5
 # Console ?
-# Airplane mode already works? Is this NM or IWD
-# KB backlight even though my laptop doesn't have one
+# Airplane mode already works? Is this NM or IWD?
+# Backlight
 # Lock
 # ???
 bindsym XF86Calculator exec --no-startup-id galculator
+bindsym Print exec --no-startup-id scrot
 
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
@@ -32,24 +42,24 @@ bindsym $mod+Down focus down
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+down move down
+bindsym $mod+Shift+Down move down
 
 bindsym $mod+h split h
 bindsym $mod+v split v
+bindsym $mod+t layout toggle tabbed split
 bindsym $mod+space floating toggle
-
 bindsym F11 fullscreen toggle
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3?"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10"
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -60,7 +70,9 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+10 workspace $ws10
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -71,25 +83,35 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+10 move container to workspace $ws10
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 assign [class="firefox"] $ws1
 assign [class="Xfce4-terminal"] $ws2
-
-# To the shadow realm
-assign [class="discord"] $ws3
+assign [class="Arduino IDE"] $ws2
+assign [class="discord"] $ws6
+assign [class="WhatSie"] $ws6
 assign [class="Thunar"] $ws3
 assign [class="hp-toolbox"] $ws3
-assign [class="llpp"] $ws3
-assign [class="libreoffice-writer"] $ws3
-assign [class="libreoffice-calc"] $ws3
-assign [class="libreoffice-impress"] $ws3
-assign [class="libreoffice-draw"] $ws3
-assign [class="libreoffice-base"] $ws3
-assign [class="libreoffice-math"] $ws3
-assign [class="Soffice"] $ws3
+assign [class="Blender"] $ws3
+assign [class="libreoffice-writer"] $ws4
+assign [class="libreoffice-calc"] $ws4
+assign [class="libreoffice-impress"] $ws4
+assign [class="libreoffice-draw"] $ws4
+assign [class="libreoffice-base"] $ws4
+assign [class="libreoffice-math"] $ws4
+assign [class="Soffice"] $ws4
+assign [class="Gimp"] $ws3
+assign [class="KeePassXC"] $ws10
+assign [class="steam"] $ws5
+assign [class="Minecraft Launcher"] $ws5
+assign [class="Modrinth-app"] $ws5
+assign [class="Minecraft* 1.20.2"] $ws5
 
 for_window [class="Galculator"] floating enable
+for_window [class="discord"] floating disable
+
+#for_window [workspace=$ws1] layout tabbed
+#for_window [workspace=$ws3] layout tabbed
 
 exec --no-startup-id firefox&
 exec --no-startup-id xfce4-terminal&
@@ -97,6 +119,18 @@ exec --no-startup-id xfce4-terminal&
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec --no-startup-id systemctl poweroff
+
+mode "resize" {
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+	bindsym Return mode "default"
+
+	bindsym Right resize grow width 10 px or 10 ppt
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+}
+bindsym $mod+r mode "resize"
 
 # class                 border  backgr. text    indicat child_border
 client.focused          #ffffff #000000 #ffffff #000000 #000000
@@ -107,6 +141,11 @@ client.placeholder      #000000 #000000 #ffffff #000000 #000000
 
 bar {
 	status_command i3status
+	strip_workspace_numbers yes
+	font pango:monospace 8
+
+	bindsym button4 nop
+	bindsym button5 nop
 
 	colors {
 		background #000000
