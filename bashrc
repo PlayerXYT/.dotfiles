@@ -14,7 +14,6 @@ alias egrep='grep -E --color=auto'
 alias grep='grep --color=auto'
 alias psql='psql -U postgres'
 alias cp='cp -r'
-alias exit='tmux detach'
 
 echo -ne "\e[5 q"
 
