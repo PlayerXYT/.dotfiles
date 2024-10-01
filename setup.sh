@@ -1,3 +1,5 @@
+#!/bin/bash
+
 arch_install() {
 	# Install core packages
 	sudo pacman -S git bash-completion neovim neofetch tmux --noconfirm
