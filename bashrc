@@ -1,8 +1,3 @@
-if [[ -z $TMUX ]]; then
-	tmux attach || tmux new
-	\exit
-fi
-
 alias ls='ls --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -la --color=auto'
@@ -14,8 +9,6 @@ alias egrep='grep -E --color=auto'
 alias grep='grep --color=auto'
 alias psql='psql -U postgres'
 alias cp='cp -r'
-
-echo -ne "\e[5 q"
 
 mkfl() {
 	if [[ -z $1 ]]; then

@@ -2,7 +2,7 @@
 
 arch_install() {
 	# Install core packages
-	sudo pacman -S git bash-completion neovim neofetch tmux --noconfirm
+	sudo pacman -S git bash-completion neovim neofetch --noconfirm
 	sudo pacman -S --asdeps go --noconfirm
 	# Bootstrap yay
 	git clone https://aur.archlinux.org/yay.git
@@ -23,7 +23,7 @@ arch_install() {
 if grep -q "ID=arch" /etc/os-release; then
 	arch_install &
 else
-	echo -e "Error: Unknown distro. This bashrc depends on neovim, neofetch and tmux\ngit and bash-completion are also reccomended."
+	echo -e "Error: Unknown distro. This bashrc depends on neovim and neofetch\ngit and bash-completion are also reccomended."
 fi
 
 cp -s bashrc ~/.bashrc
