@@ -23,7 +23,7 @@ arch_install() {
 if grep -q "ID=arch" /etc/os-release; then
 	arch_install &
 else
-	echo -e "Error: Unknown distro. This bashrc depends on neovim and neofetch\ngit and bash-completion are also reccomended."
+	echo -e "Warning: Unknown distro. This bashrc depends on neovim and neofetch\ngit and bash-completion are also reccomended."
 fi
 
 cp -s bashrc ~/.bashrc
