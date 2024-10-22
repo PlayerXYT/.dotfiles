@@ -137,6 +137,9 @@ nvim1() {
 
 alias vi='nvim1'
 alias vim='nvim1'
+alias vidiff='nvim1 -d'
+alias vimdiff='nvim1 -d'
+alias nvimdiff='nvim1 -d'
 
 if [[ $PATH != */opt/custom* ]]; then
 	export PATH=$PATH:/opt/custom

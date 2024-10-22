@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pago:monospace, Font Awesome 6 Free Regular, Font Awesome 6 Free Solid, Font Awesome 6 Brands Regular 14
+font pango:Press Start 2P 8
 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
@@ -142,7 +142,8 @@ client.placeholder      #000000 #000000 #ffffff #000000 #000000
 bar {
 	status_command i3status
 	strip_workspace_numbers yes
-	font pango:monospace 8
+	# https://fontawesome.com
+	font pango:FreeSans, Font Awesome 6 Free Solid, Font Awesome 6 Brands Regular 10
 
 	bindsym button4 nop
 	bindsym button5 nop
