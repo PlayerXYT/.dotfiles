@@ -46,7 +46,8 @@ bindsym $mod+Shift+Down move down
 
 bindsym $mod+h split h
 bindsym $mod+v split v
-bindsym $mod+t layout toggle tabbed split
+bindsym $mod+t layout tabbed
+bindsym $mod+Shift+t layout splith
 bindsym $mod+space floating toggle
 bindsym F11 fullscreen toggle
 
