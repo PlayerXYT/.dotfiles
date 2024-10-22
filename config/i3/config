@@ -94,6 +94,7 @@ assign [class="WhatSie"] $ws6
 assign [class="Thunar"] $ws3
 assign [class="hp-toolbox"] $ws3
 assign [class="Blender"] $ws3
+assign [class="libreoffice-startcenter"] $ws4
 assign [class="libreoffice-writer"] $ws4
 assign [class="libreoffice-calc"] $ws4
 assign [class="libreoffice-impress"] $ws4
