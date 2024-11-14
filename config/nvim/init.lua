@@ -14,6 +14,9 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.cmd("colorscheme vim")
+vim.cmd("set notermguicolors")
+vim.cmd("hi EndOfBuffer ctermfg=black")
 
 vim.opt.formatoptions:remove("c")
 vim.opt.formatoptions:remove("r")
@@ -66,6 +69,3 @@ elseif getftype()=="c" or getftype()=="cpp" then
 	end, { nargs=1 })
 	print("C plugin enabled")
 end
-
--- vim.utils.nnoremap("<C-d>", "<C-d>zz")
--- vim.utils.nnoremap("<C-u>", "<C-u>zz")

@@ -7,8 +7,8 @@ cd yay
 makepkg -si --noconfirm
 cd ..
 rm -rf yay
-# Add "community" and "multilib" (must be done manually)
-sudo nvim /etc/pacman.conf
+# Add "community" and "multilib"
+sudo sed 's/#\[multilib\]/\[multilib\]' /etc/pacman.conf > /etc/pacman.conf
 # Remove orphans
 yay -Rs $(yay -Qqdt)
 # Update repos and packages
