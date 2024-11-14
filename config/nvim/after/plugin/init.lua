@@ -1,1 +1,1 @@
-vim.cmd("set formatoptions-=cro")
+vim.cmd("autocmd FileType * set formatoptions-=cro")

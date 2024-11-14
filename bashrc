@@ -134,11 +134,14 @@ evlc() {
 # For some reason this doesn't work in the vimrc
 nvim1() {
 	nvim $@
-	echo -ne "\e[0 q"
+	echo -ne "\e[5 q"
 }
 
 alias vi='nvim1'
 alias vim='nvim1'
+alias vidiff='nvim1 -d'
+alias vimdiff='nvim1 -d'
+alias nvimdiff='nvim1 -d'
 
 if [[ $PATH != */opt/custom* ]]; then
 	export PATH=$PATH:/opt/custom
