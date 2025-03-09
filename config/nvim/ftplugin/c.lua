@@ -1,0 +1,7 @@
+vim.api.nvim_create_user_command("Start", function(opts)
+	vim.api.nvim_buf_set_lines(0, 0, 1, false, {"", "#include <stdio.h>", "#include <stdlib.h>", "", "int main(int argc, char** argv) {", "\t", "\treturn 0;", "}"})
+end, {})
+vim.api.nvim_create_user_command("Import", function(opts)
+	vim.api.nvim_buf_set_lines(0, 0, 1, false, {"", "#include <"..opts.args..".h>"})
+end, { nargs=1 })
+print("C plugin enabled")
