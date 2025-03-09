@@ -11,6 +11,21 @@ alias psql='psql -U postgres'
 alias cp='cp -r'
 alias gzip="gzip -k"
 alias gunzip="gunzip -k"
+alias please="sudo"
+
+# If in TMUX
+if [ -z "$TMUX" ]; then
+	# If connected with SSH
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		exec tmux new -As0
+	fi
+else
+	alias c="tmuz new -As0"
+fi
+
+if [ -n "$TMUX" ]; then
+	alias quit='tmux detach'
+fi
 
 mkfl() {
 	if [[ -z $1 ]]; then
