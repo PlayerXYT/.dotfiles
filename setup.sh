@@ -32,3 +32,4 @@ cp -s config/i3 ~/.config
 cp -s config/i3status ~/.config
 cp -s config/neofetch ~/.config
 cp -s config/nvim ~/.config
+cp -s config/pycodestyle ~/.config
